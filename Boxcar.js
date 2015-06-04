@@ -139,6 +139,12 @@ var Boxcar = {
         }, function() {}, onerror);
 
     },
+    
+    deleteMsg: function(msgid) {
+    	this.db.transaction(function(tx) {
+            tx.executeSql("DELETE FROM pushes WHERE id = ?", [msgid]);
+        }, function() {}, onerror);
+    },
 
     getTags: function(data) {
         this._verifyArgs(data, {onsuccess: 0, onerror: 0});
